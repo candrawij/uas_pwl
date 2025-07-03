@@ -41,6 +41,8 @@ class ProdukController extends BaseController
             'updated_at' => date("Y-m-d H:i:s")
         ];
 
+        $dataProduk = $this->product->find($id);
+
         if ($this->request->getPost('check') == 1) {
         if ($dataProduk['foto'] != '' and file_exists("img/" . $dataProduk['foto'] . "")) {
             unlink("img/" . $dataProduk['foto']);

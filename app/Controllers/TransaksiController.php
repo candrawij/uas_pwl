@@ -5,15 +5,21 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
+use App\Models\ProductModel; 
+use Dompdf\Dompdf;
+
 class TransaksiController extends BaseController
 {
     protected $cart;
+    protected $product; 
 
     function __construct()
     {
         helper('number');
         helper('form');
         $this->cart = \Config\Services::cart();
+
+        $this->product = new ProductModel();
     }
 
     public function index()
@@ -28,7 +34,7 @@ class TransaksiController extends BaseController
         $this->cart->insert(array(
             'id'        => $this->request->getPost('id'),
             'qty'       => 1,
-            'price'     => $this->request->getPost('harga'),
+            'price'     => (float) str_replace(['.', ','], '', $this->request->getPost('harga')),
             'name'      => $this->request->getPost('nama'),
             'options'   => array('foto' => $this->request->getPost('foto'))
         ));
@@ -63,5 +69,33 @@ class TransaksiController extends BaseController
         session()->setflashdata('success', 'Keranjang Berhasil Dihapus');
         return redirect()->to(base_url('keranjang'));
     }
+
+public function download()
+{
+        // ambil data keranjang
+    $items = $this->cart->contents();
+
+		//pass data to file view
+    $html = view('v_invoice', [
+        'items' => $items,
+        'total' => $this->cart->total(),
+    ]);
+
+    // instantiate and use the dompdf class
+    $dompdf = new Dompdf();
+
+    // load HTML content (file view)
+    $dompdf->loadHtml($html);
+
+    // (optional) setup the paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+
+    // render html as PDF
+    $dompdf->render();
+
+    // output the generated pdf
+    $dompdf->stream('invoice-' . date('YmdHis'), ['Attachment' => true]);
+}
+
 }
   

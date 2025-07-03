@@ -1,13 +1,27 @@
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
+<footer class="footer">
+  <div class="container-fluid d-flex justify-content-around">
+    <nav class="pull-left">
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="http://www.themekita.com">
+            ThemeKita
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Help </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"> Licenses </a>
+        </li>
+      </ul>
+    </nav>
     <div class="copyright">
-      &copy; Copyright <strong><span>Toko</span></strong>. All Rights Reserved
+      2024, made with <i class="fa fa-heart heart text-danger"></i> by
+      <a href="http://www.themekita.com">ThemeKita</a>
     </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    <div>
+      Distributed by
+      <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
     </div>
-  </footer><!-- End Footer -->
+  </div>
+</footer>

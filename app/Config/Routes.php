@@ -36,5 +36,6 @@ $routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
     $routes->post('', 'TransaksiController::cart_add');
     $routes->post('edit', 'TransaksiController::cart_edit');
     $routes->get('delete/(:any)', 'TransaksiController::cart_delete/$1');
+    $routes->get('download', 'TransaksiController::download');
     $routes->get('clear', 'TransaksiController::cart_clear');
 });

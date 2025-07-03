@@ -1,5 +1,5 @@
 <?php
-$hlm = "home";
+$hlm = "Home";
 if(uri_string()!=""){
     $hlm=ucwords(uri_string());
 }
@@ -9,100 +9,151 @@ if(uri_string()!=""){
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Toko - <?php echo $hlm ?></title>
+  <meta
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    name="viewport"
+  />
+  <link
+    rel="icon"
+    href="<?= base_url()?>kaiadmin-lite-1.2.0/assets/img/kaiadmin/favicon.ico"
+    type="image/x-icon"
+  />
 
-  <title>- Toko - <?php echo $hlm ?></title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <!-- Fonts and icons -->
+  <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/webfont/webfont.min.js"></script>
+  <script>
+    WebFont.load({
+      google: { families: ["Public Sans:300,400,500,600,700"] },
+      custom: {
+        families: [
+          "Font Awesome 5 Solid",
+          "Font Awesome 5 Regular",
+          "Font Awesome 5 Brands",
+          "simple-line-icons",
+        ],
+        urls: ["<?= base_url()?>kaiadmin-lite-1.2.0/assets/css/fonts.min.css"],
+      },
+      active: function () {
+        sessionStorage.fonts = true;
+      },
+    });
+  </script>
 
-  <!-- Favicons -->
-  <link href="<?= base_url()?>NiceAdmin/assets/img/favicon.png" rel="icon">
-  <link href="<?= base_url()?>NiceAdmin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="<?= base_url()?>kaiadmin-lite-1.2.0/assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>kaiadmin-lite-1.2.0/assets/css/plugins.min.css" />
+  <link rel="stylesheet" href="<?= base_url()?>kaiadmin-lite-1.2.0/assets/css/kaiadmin.min.css" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="<?= base_url()?>NiceAdmin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="<?= base_url()?>NiceAdmin/assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Mar 09 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link rel="stylesheet" href="<?= base_url()?>kaiadmin-lite-1.2.0/assets/css/demo.css" />
 </head>
 
 <body>
+    <div class="wrapper">
+    <?= $this->include('components/sidebar') ?>
 
-<?= $this->include('components/header') ?>
+    <div class="main-panel">
+      <?= $this->include('components/header') ?>
 
-<?= $this->include('components/sidebar') ?>
-
-  <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Data Tables</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
-          <?php
-          if($hlm!="Home"){
-            ?>
-            <li class="breadcrumb-item"><?php echo $hlm?></li> 
-            <?php
-          }
-          ?> 
-        </ol>
-    </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-              <div class="card-body">
-              <h5 class="card-title"><?php echo $hlm?></h5>
-              <?= $this->renderSection('content') ?>
+        <div class="container">
+          <div class="page-inner">
+            <div class="page-header">
+              <h3 class="fw-bold mb-3">Data Tables _</h3>
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">Home</li>
+                  <?php
+                  if($hlm!="Home"){
+                    ?>
+                    <li class="breadcrumb-item"><?php echo $hlm?></li> 
+                    <?php
+                  }
+                  ?> 
+                </ol>
+              </nav>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $hlm?></h5>
+                    <?= $this->renderSection('content') ?>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
-      </div>
-    </section>
+        <?= $this->include('components/footer') ?>
+    </div>
+    </div>
+    
+    <!--   Core JS Files   -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/core/popper.min.js"></script>
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/core/bootstrap.min.js"></script>
 
-  </main><!-- End #main -->
+    <!-- jQuery Scrollbar -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
-  <?= $this->include('components/footer') ?>
+    <!-- Chart JS -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/chart.js/chart.min.js"></script>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- jQuery Sparkline -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
-  <!-- Vendor JS Files -->
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/quill/quill.min.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="<?= base_url()?>NiceAdmin/assets/vendor/php-email-form/validate.js"></script>
+    <!-- Chart Circle -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/chart-circle/circles.min.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="<?= base_url()?>NiceAdmin/assets/js/main.js"></script>
+    <!-- Datatables -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/datatables/datatables.min.js"></script>
 
-</body>
+    <!-- Bootstrap Notify -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
+    <!-- jQuery Vector Maps -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/kaiadmin.min.js"></script>
+
+    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/setting-demo.js"></script>
+    <script src="<?= base_url()?>kaiadmin-lite-1.2.0/assets/js/demo.js"></script>
+    <script>
+      $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#177dff",
+        fillColor: "rgba(23, 125, 255, 0.14)",
+      });
+
+      $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#f3545d",
+        fillColor: "rgba(243, 84, 93, .14)",
+      });
+
+      $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
+        type: "line",
+        height: "70",
+        width: "100%",
+        lineWidth: "2",
+        lineColor: "#ffa534",
+        fillColor: "rgba(255, 165, 52, .14)",
+      });
+    </script>
+  </body>
 </html>
